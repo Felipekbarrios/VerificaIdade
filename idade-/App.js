@@ -6,19 +6,14 @@ const MaiorOuMenorIdade = () => {
   const [idade, setIdade] = useState('');
   const [mensagem, setMensagem] = useState('');
 
-  const handleChange = (value) => {
-    setIdade(value);
-  };
-
-
   const verificarIdade = () => {
-    const idadeNum = Number(idade);
-    if (idadeNum >= 18) {
-      setMensagem('Você é maior de idade.');
-    } else if (idadeNum > 0) {
-      setMensagem('Você é menor de idade.');
-    } else {
+    const idadeNum = parseInt(idade);
+    if (isNaN(idadeNum)) {
       setMensagem('Por favor, insira uma idade válida.');
+    } else if (idadeNum >= 18) {
+      setMensagem('Você é maior de idade.');
+    } else {
+      setMensagem('Você é menor de idade.');
     }
   };
 
@@ -28,9 +23,9 @@ const MaiorOuMenorIdade = () => {
       <TextInput
         style={styles.input}
         value={idade}
-        onChangeText={handleChange}
+        onChangeText={setIdade}  // Corrected to update 'idade' state
         placeholder="Digite sua idade"
-        keyboardType="numeric" 
+        keyboardType="numeric"
       />
       <Button title="Verificar" onPress={verificarIdade} />
       {mensagem ? <Text>{mensagem}</Text> : null}
