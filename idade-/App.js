@@ -23,7 +23,7 @@ const MaiorOuMenorIdade = () => {
       <TextInput
         style={styles.input}
         value={idade}
-        onChangeText={setIdade}  // Corrected to update 'idade' state
+        onChangeText={setIdade}
         placeholder="Digite sua idade"
         keyboardType="numeric"
       />
